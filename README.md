@@ -1,5 +1,5 @@
 # VENUE
---------
+
 [![Build Status](https://travis-ci.org/albert-park/venue.svg)](https://travis-ci.org/albert-park/venue)
 
 [![Codeclimate](https://d3s6mut3hikguw.cloudfront.net/github/albert-park/venue/badges/gpa.svg)](https://codeclimate.com/github/albert-park/venue)
