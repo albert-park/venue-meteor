@@ -55,31 +55,57 @@
     function initialize() {
 
       var featureOpts = [
-        {
-          stylers: [
-            { hue: '#333333' },
-            { visibility: 'simplified' },
-            { gamma: .2 },
-            { weight: 0.5 }
-          ]
-        },
-        {
-          elementType: 'labels',
-          stylers: [
-            { visibility: 'off' }
-          ]
-        },
-        {
-          featureType: 'water',
-          stylers: [
-            { color: '#333333' }
-          ]
-        }
+          {
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "road",
+              "elementType": "geometry",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  },
+                  {
+                      "color": "#000000"
+                  }
+              ]
+          },
+          {
+              "featureType": "landscape",
+              "stylers": [
+                  {
+                      "color": "#ffffff"
+                  },
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+            "featureType": 'water',
+            "stylers": [
+              { "color": 'red' }
+            ]
+          }
       ];
 
       var mapOptions = {
         zoom: 14,
         center: generalAssembly,
+        disableDefaultUI: true,
         mapTypeControlOptions: {
           mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
         },
@@ -97,11 +123,11 @@
 
       map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 
-      var image = 'https://pbs.twimg.com/profile_images/1257978555/gaddafi.jpg';
+      var image = 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-512.png';
       marker = new google.maps.Marker({
         map:map,
-        draggable:true,
-        icon: image,
+        draggable:false,
+        // icon: image,
         animation: google.maps.Animation.DROP,
         position: generalAssembly
       });
@@ -109,7 +135,7 @@
 
       marker2 = new google.maps.Marker({
         map:map,
-        draggable:true,
+        draggable:false,
         position: generalAssembly2
       });
     }
