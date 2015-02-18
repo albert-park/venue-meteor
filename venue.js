@@ -15,7 +15,7 @@ if (Meteor.isClient) {
       var message = $('#messageBox').val();
       var roomName = $('#roomBox').val();
 
-      Messages.insert({content: message, roomName: Session.get('currentRoom'), postedBy: Meteor.user(), createdAt: new Date()});
+      Messages.insert({content: message, roomName: Session.get('currentRoom'), postedBy: Meteor.user().profile.name, createdAt: new Date()});
       $('#messageBox').val('');
     }
   });
