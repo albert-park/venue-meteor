@@ -1,28 +1,32 @@
 <head>
-  <title>my_chat</title>
+  <title>Welcome to VENUE</title>
 </head>
 
 <body>
   {{>loginButtons}}
   <br />
-  <h1>Welcome to chat!</h1>
-  {{#if currentUser}}
-    {{> rooms}}
-    <br />
-    {{> chat}}
-    {{else}}
-    <p>Sign up bro</p>
-  {{/if}}
+  <h1 class="centered">Welcome to Venue!</h1>
+	  <div class="container" style="padding-top: 50px;">
+		 <div class="row"> 
+		  {{#if currentUser}}
+		    {{> chat}}
+		    {{> rooms}}
+		    {{else}}
+		    <p>Sign up bro</p>
+		  {{/if}}
+		  </div>
+	  </div>
 </body>
 
 <template name="rooms">
-  <input id="roomBox" type="text" placeholder="your room name"/>
-  <button id="createRoom" class="btn btn-primary">create</button>
-  <select>
-    {{#each roomList}}
-      <option value="{{name}}">{{name}}</option>
-    {{/each}}
-  </select>
+  
+ <div class="col-md-4"><input id="roomBox" type="text" placeholder="your room name"/>
+      <button id="createRoom" class="btn btn-primary">create</button>
+      <select>
+        {{#each roomList}}
+          <option value="{{name}}">{{name}}</option>
+        {{/each}}
+      </select></div>
 </template>
 
 <template name="chat">
@@ -33,8 +37,7 @@
       <li>{{content}}</li>
     {{/each}}
   </ul> -->
-	<div class="container">
-		<div class="row">
+	
 	    <div class="col-md-8">
 	    	<div class="panel panel-info">
 	        <div class="panel-heading">
@@ -50,7 +53,7 @@
 			          	      <!-- <img class="media-object img-circle " src=""/> -->
 			                </a>
 		                	<div class="media-body" >
-		                   <small class="text-muted">{{ postedBy }} | {{ createdAt }}</small><br>
+		                   <small class="text-muted"><strong>{{ postedBy }}</strong> | {{ createdAt }}</small><br>
 		                   {{content}}
 		                    <hr />
 		                </div>
@@ -70,7 +73,6 @@
           </div>
 				 </div>
 			 </div>
-		 </div>
-	 </div>
+		 
 </template>
 
