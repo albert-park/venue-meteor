@@ -1,14 +1,29 @@
 <head>
-  <title>venue</title>
+  <title>my_chat</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+  {{>loginButtons}}
+  {{> chat}}
 </body>
 
 <template name="hello">
   <button>Click Me</button>
   <p>You've pressed the button {{counter}} times.</p>
+</template>
+
+<template name="chat">
+  <h1>Welcome to chat!</h1>
+  <input id="messageBox" type="text" placeholder="type your message here"/>
+  <input id="roomBox" type="text" placeholder="your room name"/>
+  <select>
+    <option value="">argentina</option>
+    <option value="">persia</option>
+  </select>
+  <button class="btn btn-primary">send</button>
+  {{#each messageList}}
+    <li>{{content}}</li>
+  {{/each}}
+  <ul id="messageList">
+  </ul>
 </template>
