@@ -28,9 +28,9 @@
 <template name="chat">
   <input id="messageBox" type="text" placeholder="Type message"/>
   <button class="btn btn-primary">send</button>
-  {{#each messageList}}
-    <li>{{content}}</li>
-  {{/each}}
   <ul id="messageList">
+    {{#each messageList}}
+      <li>{{content}}</li>
+    {{/each}}
   </ul>
 </template>
