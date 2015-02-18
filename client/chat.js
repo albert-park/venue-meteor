@@ -21,6 +21,16 @@ Template.chat.rendered = function(){
  Template.chat.helpers({
    messageList: function () {
      return Messages.find({roomName: Session.get('currentRoom') });
+     },
+    roomName: function(){ return Session.get('currentRoom')},
+
+    messageCount: function(){
+      var panelBody = $('.panel-body');
+      panelBody.velocity("scroll", {duration: 1500, container: panelBody, offset: panelBody.prop("scrollHeight")})
+      $("li").last().velocity("fadeIn", {duration: 1500});
+      $(".label-danger").velocity({rotateX: 180, duration: 100})
+        .velocity("reverse");
+      return Messages.find({roomName: Session.get('currentRoom')}).count();
    }
  });
 
