@@ -1,17 +1,22 @@
+Messages = new Meteor.Collection('messages');
+
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  Template.chat.helpers({
+    messageList: function () {
+      return Messages.find({roomName: 'myRoomster'});
     }
   });
 
-  Template.hello.events({
+  Template.chat.events({
     'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+      var message = $('#messageBox').val();
+      var roomName = $('#roomBox').val();
+
+      Messages.insert({content: message, roomName: roomName, createdAt: new Date()});
+      $('#messageBox').val('');
     }
   });
 }
