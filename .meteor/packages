@@ -10,5 +10,5 @@ insecure
 accounts-ui
 accounts-password
 accounts-facebook
-twbs:bootstrap
 accounts-twitter
+mizzao:bootstrap-3
