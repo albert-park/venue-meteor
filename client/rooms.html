@@ -1,0 +1,9 @@
+<template name="rooms">
+  <input id="roomBox" type="text" placeholder="your room name"/>
+  <button id="createRoom" class="btn btn-primary">create</button>
+  <select>
+    {{#each roomList}}
+      <option value="{{name}}">{{name}}</option>
+    {{/each}}
+  </select>
+</template>
