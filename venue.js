@@ -4,29 +4,20 @@ Rooms = new Meteor.Collection('rooms');
 if (Meteor.isClient) {
   Session.setDefault('currentRoom', '');
 
-  Template.chat.rendered = function(){
-    var panelBody = this.$('.panel-body');
-    panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 100);
-
-    this.find('ul')._uihooks = {
-      insertElement: function(node, next) {
-        $(node)
-          .hide()
-          .insertBefore(next)
-          .fadeIn(1000);
-        panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 300);
-      },
-      removeElement: function(node) {
-        $(node).fadeOut(function() {
-          this.remove();
-        });
-      }
-    };
-  }
-
   Template.chat.helpers({
     messageList: function () {
       return Messages.find({roomName: Session.get('currentRoom') });
+    },
+
+    roomName: function(){ return Session.get('currentRoom')},
+
+    messageCount: function(){
+      var panelBody = $('.panel-body');
+      panelBody.velocity("scroll", {duration: 1500, container: panelBody, offset: panelBody.prop("scrollHeight")})
+      $("li").last().velocity("fadeIn", {duration: 1500});
+      $(".label-danger").velocity({rotateX: 180, duration: 100})
+        .velocity("reverse");
+      return Messages.find({roomName: Session.get('currentRoom')}).count();
     }
   });
 

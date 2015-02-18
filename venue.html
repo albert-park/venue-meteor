@@ -30,18 +30,11 @@
 </template>
 
 <template name="chat">
-  <!-- <input id="messageBox" type="text" placeholder="Type message"/>
-  <button class="btn btn-primary">send</button>
-  <ul id="messageList">
-    {{#each messageList}}
-      <li>{{content}}</li>
-    {{/each}}
-  </ul> -->
-	
+    {{#if roomName}}
 	    <div class="col-md-8">
 	    	<div class="panel panel-info">
 	        <div class="panel-heading">
-	            RECENT CHAT HISTORY
+            RECENT CHAT HISTORY for room: {{roomName}}  <span class="label label-danger pull-right"> {{messageCount}} </span>
 	        </div>
           <div class="panel-body fixed-panel">
 						<ul id="messageList" class="media-list">
@@ -73,6 +66,6 @@
           </div>
 				 </div>
 			 </div>
-		 
+       {{/if}} 
 </template>
 
