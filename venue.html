@@ -1,5 +1,6 @@
 <head>
   <title>my_chat</title>
+   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 </head>
 
 <body>
@@ -13,6 +14,7 @@
     {{else}}
     <p>Sign up bro</p>
   {{/if}}
+  {{> mapPostsList}}
 </body>
 
 <template name="rooms">
@@ -33,4 +35,97 @@
       <li>{{content}}</li>
     {{/each}}
   </ul>
+</template>
+
+<template name="mapPostsList">
+
+  <div id="map-canvas"></div>
+
+  <script>
+    // The following example creates a marker in Stockholm, Sweden
+    // using a DROP animation. Clicking on the marker will toggle
+    // the animation between a BOUNCE animation and no animation.
+
+    var generalAssembly = new google.maps.LatLng(34.024604, -118.482168);
+    var generalAssembly2 = new google.maps.LatLng(34.012917, -118.495198);
+    var marker;
+    var map;
+    var MY_MAPTYPE_ID = 'custom_style';
+
+    function initialize() {
+
+      var featureOpts = [
+        {
+          stylers: [
+            { hue: '#333333' },
+            { visibility: 'simplified' },
+            { gamma: .2 },
+            { weight: 0.5 }
+          ]
+        },
+        {
+          elementType: 'labels',
+          stylers: [
+            { visibility: 'off' }
+          ]
+        },
+        {
+          featureType: 'water',
+          stylers: [
+            { color: '#333333' }
+          ]
+        }
+      ];
+
+      var mapOptions = {
+        zoom: 14,
+        center: generalAssembly,
+        mapTypeControlOptions: {
+          mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
+        },
+        mapTypeId: MY_MAPTYPE_ID
+      };
+
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+              mapOptions);
+
+      var styledMapOptions = {
+        name: 'Custom Style'
+      };
+
+      var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
+
+      map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+
+      var image = 'https://pbs.twimg.com/profile_images/1257978555/gaddafi.jpg';
+      marker = new google.maps.Marker({
+        map:map,
+        draggable:true,
+        icon: image,
+        animation: google.maps.Animation.DROP,
+        position: generalAssembly
+      });
+      google.maps.event.addListener(marker, 'click', toggleBounce);
+
+      marker2 = new google.maps.Marker({
+        map:map,
+        draggable:true,
+        position: generalAssembly2
+      });
+    }
+
+    function toggleBounce() {
+
+      if (marker.getAnimation() != null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+
 </template>
