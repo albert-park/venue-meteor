@@ -2,3 +2,8 @@
   height: 200px;
   overflow: auto;
 }
+/* CSS declarations go here */
+#map-canvas {
+	border: 0px solid black;
+	height: 700px;
+}

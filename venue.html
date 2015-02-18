@@ -1,5 +1,6 @@
 <head>
   <title>Welcome to VENUE</title>
+   <script src="https://maps.googleapis.com/maps/api/js?v=3"></script>
 </head>
 
 <body>
@@ -15,64 +16,7 @@
 		    <p>Sign up bro</p>
 		  {{/if}}
 		  </div>
+		  {{> mapPostsList}}
 	  </div>
 </body>
-
-<template name="rooms">
   
- <div class="col-md-4"><input id="roomBox" type="text" placeholder="your room name"/>
-      <button id="createRoom" class="btn btn-primary">create</button>
-      <select>
-        {{#each roomList}}
-          <option value="{{name}}">{{name}}</option>
-        {{/each}}
-      </select></div>
-</template>
-
-<template name="chat">
-  <!-- <input id="messageBox" type="text" placeholder="Type message"/>
-  <button class="btn btn-primary">send</button>
-  <ul id="messageList">
-    {{#each messageList}}
-      <li>{{content}}</li>
-    {{/each}}
-  </ul> -->
-	
-	    <div class="col-md-8">
-	    	<div class="panel panel-info">
-	        <div class="panel-heading">
-	            RECENT CHAT HISTORY
-	        </div>
-          <div class="panel-body fixed-panel">
-						<ul id="messageList" class="media-list">
-					    {{#each messageList}}
-								<li class="media">
-									<div class="media-body">
-										<div class="media">
-			                <a class="pull-left" href="#">
-			          	      <!-- <img class="media-object img-circle " src=""/> -->
-			                </a>
-		                	<div class="media-body" >
-		                   <small class="text-muted"><strong>{{ postedBy }}</strong> | {{ createdAt }}</small><br>
-		                   {{content}}
-		                    <hr />
-		                </div>
-			            </div>
-								</div>
-			         </li>
-	            {{/each}}
-            </ul>
-					 </div>
-				 	 <div class="panel-footer">
-           	<div class="input-group">
-	            <input type="text" id="messageBox" class="form-control" placeholder="Enter Message" />
-	            <span class="input-group-btn">
-	                <button class="btn btn-info" type="button">SEND</button>
-	            </span>
-            </div>
-          </div>
-				 </div>
-			 </div>
-		 
-</template>
-
