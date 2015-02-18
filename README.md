@@ -1,8 +1,8 @@
 # VENUE
 
-[![Build Status](https://travis-ci.org/albert-park/venue.svg)](https://travis-ci.org/albert-park/venue)
+[![Build Status](https://travis-ci.org/albert-park/venue-meteor.svg)](https://travis-ci.org/albert-park/venue-meteor)
 
-[![Codeclimate](https://d3s6mut3hikguw.cloudfront.net/github/albert-park/venue/badges/gpa.svg)](https://codeclimate.com/github/albert-park/venue)
+[![Code Climate](https://codeclimate.com/github/albert-park/venue-meteor/badges/gpa.svg)](https://codeclimate.com/github/albert-park/venue-meteor)
 
 Venue is the easiest way for people at places to connect with each other.
 
