@@ -1,23 +1,11 @@
 Messages = new Meteor.Collection('messages');
+Rooms = new Meteor.Collection('rooms');
 
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
+  Session.setDefault('currentRoom', '');
 
-  Template.chat.helpers({
-    messageList: function () {
-      return Messages.find({roomName: 'myRoomster'});
-    }
-  });
-
-  Template.chat.events({
-    'click button': function () {
-      var message = $('#messageBox').val();
-      var roomName = $('#roomBox').val();
-
-      Messages.insert({content: message, roomName: roomName, createdAt: new Date()});
-      $('#messageBox').val('');
-    }
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_AND_EMAIL"
   });
 }
 
