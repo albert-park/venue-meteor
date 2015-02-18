@@ -2,7 +2,10 @@
   <div class="col-md-8">
 	<div class="panel panel-info">
     <div class="panel-heading">
-        RECENT CHAT HISTORY
+    {{#if roomName}}
+      RECENT CHAT HISTORY for room: {{roomName}}  <span class="label label-danger pull-right"> {{messageCount}} </span>
+    {{/if}}
+
     </div>
   <div class="panel-body fixed-panel">
 				<ul id="messageList" class="media-list">
