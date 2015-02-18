@@ -1,22 +1,22 @@
-Template.chat.rendered = function(){
-   var panelBody = this.$('.panel-body');
-   panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 100);
+// Template.chat.rendered = function(){
+//    var panelBody = this.$('.panel-body');
+//    panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 100);
 
-   this.find('ul')._uihooks = {
-     insertElement: function(node, next) {
-       $(node)
-         .hide()
-         .insertBefore(next)
-         .fadeIn(1000);
-       panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 300);
-     },
-     removeElement: function(node) {
-       $(node).fadeOut(function() {
-         this.remove();
-       });
-     }
-   };
- }
+//    this.find('ul')._uihooks = {
+//      insertElement: function(node, next) {
+//        $(node)
+//          .hide()
+//          .insertBefore(next)
+//          .fadeIn(1000);
+//        panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 300);
+//      },
+//      removeElement: function(node) {
+//        $(node).fadeOut(function() {
+//          this.remove();
+//        });
+//      }
+//    };
+//  }
 
  Template.chat.helpers({
    messageList: function () {
