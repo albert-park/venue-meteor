@@ -4,22 +4,29 @@
 
 <body>
   {{>loginButtons}}
-  {{> chat}}
+  <br />
+  <h1>Welcome to chat!</h1>
+  {{#if currentUser}}
+    {{> rooms}}
+    <br />
+    {{> chat}}
+    {{else}}
+    <p>Sign up bro</p>
+  {{/if}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="rooms">
+  <input id="roomBox" type="text" placeholder="your room name"/>
+  <button id="createRoom" class="btn btn-primary">create</button>
+  <select>
+    {{#each roomList}}
+      <option value="{{name}}">{{name}}</option>
+    {{/each}}
+  </select>
 </template>
 
 <template name="chat">
-  <h1>Welcome to chat!</h1>
   <input id="messageBox" type="text" placeholder="type your message here"/>
-  <input id="roomBox" type="text" placeholder="your room name"/>
-  <select>
-    <option value="">argentina</option>
-    <option value="">persia</option>
-  </select>
   <button class="btn btn-primary">send</button>
   {{#each messageList}}
     <li>{{content}}</li>
