@@ -12,7 +12,7 @@ Template.mapPostsList.created = function(){
             "elementType": "labels",
             "stylers": [
                 {
-                    "visibility": "simplified"
+                    "visibility": "off"
                 },
                 {
                   "weight": "0.1"
@@ -27,6 +27,12 @@ Template.mapPostsList.created = function(){
             "stylers": [
                 {
                     "visibility": "off"
+                },
+                {
+                  "color": "#444444"
+                },
+                {
+                  "opacity": "0.1"
                 }
             ]
         },
@@ -34,7 +40,7 @@ Template.mapPostsList.created = function(){
           "featureType": 'water',
           "stylers": [
             {
-                    "color": "#34495e"
+                    "color": "#2c3e50"
                 },
                 {
                     "visibility": "on"
@@ -52,7 +58,7 @@ Template.mapPostsList.created = function(){
                     "color": "#34495e"
                 },
                 {
-                  "weight": "0.1"
+                    "weight": "0.1"
                 }
             ]
         },
@@ -60,10 +66,10 @@ Template.mapPostsList.created = function(){
             "featureType": "landscape",
             "stylers": [
                 {
-                    "color": "#ffffff"
+                    "color": "#ecf0f1"
                 },
                 {
-                    "visibility": "off"
+                    "visibility": "on"
                 }
             ]
         },
@@ -86,9 +92,18 @@ Template.mapPostsList.created = function(){
       name: 'Custom Style'
     };
 
+
     var customMapType = new google.maps.StyledMapType(featureOpts, styledMapOptions);
 
     map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
+
+
+     var contentString = '<h1>OH BOY</h1>';
+
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
+
 
     var image = 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-512.png';
 
