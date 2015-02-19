@@ -50,5 +50,16 @@
 
      return false;
      }
+   },
+
+   'keypress input': function(evt) {
+      var message = $('#messageBox').val();
+      var roomName = $('#roomBox').val();
+      if(evt.charCode == 13) {
+        Messages.insert({content: message, roomName: Session.get('currentRoom'), postedBy: Meteor.user().username || Meteor.user().profile.name, createdAt: new Date()});
+        $('#messageBox').val('');
+  
+        return false;
+      }
    }
  });
