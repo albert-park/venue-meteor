@@ -170,8 +170,7 @@ a:after {
 	color: white
 }
 
-#loginButtons {
-	z-index: 999;
-	padding-bottom: 10px;
+#login-dropdown-list {
+  position: absolute;
+  top: 0px;
 }
-
