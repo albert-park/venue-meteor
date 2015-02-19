@@ -170,3 +170,8 @@ a:after {
 	color: white
 }
 
+#login-dropdown-list {
+  position: absolute;
+  top: 0px;
+	left: -180px;
+}
