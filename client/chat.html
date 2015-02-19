@@ -3,7 +3,7 @@
 	<div class="panel panel-info">
     <div class="panel-heading">
     {{#if roomName}}
-      RECENT CHAT HISTORY for room: {{roomName}}  <span class="label label-danger pull-right"> {{messageCount}} </span>
+      {{roomName}}  <span class="label label-danger pull-right"> {{messageCount}} </span>
     {{/if}}
 
     </div>
@@ -17,7 +17,7 @@
 	          	      <!-- <img class="media-object img-circle " src=""/> -->
 	                </a>
                 	<div class="media-body" >
-                   <small class="text-muted"><strong>{{ postedBy }}</strong> | {{ createdAt }}</small><br>
+                   <small class="text-muted"><img src="{{ userAvatar }}" id="twitterImg"><strong>{{ postedBy }}</strong> | {{ createdAt }}</small><br>
                    {{content}}
                     <hr />
                 </div>
@@ -38,3 +38,4 @@
 		 </div>
 	 </div>
 </template>
+
