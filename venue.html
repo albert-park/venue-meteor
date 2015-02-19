@@ -7,43 +7,22 @@
 </head>
 
 <body>
-<!-- Fixed navbar -->
-	    <div id="navigation" class="navbar navbar-default navbar-fixed-top">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="#"><b>VENUE</b></a>
-	        </div>
-	        <div class="navbar-collapse collapse navbar-right">
-	          <ul class="nav navbar-nav">
-	          	{{#if currentUser}}
-		          	{{else}}
-	            <li><a href="#home" class="smothscroll">Home</a></li>
-	            <li><a href="#desc" class="smothscroll">Description</a></li>
-	            <li><a href="#showcase" class="smothScroll">Showcase</a></li>
-	            <li><a href="#contact" class="smothScroll">Contact</a></li>
-	            {{/if}}
-	            <li><a>{{>loginButtons}}</a></li>
-	          </ul>
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </div>
-{{#if currentUser}}
-	<div class="container" style="padding-top: 50px;">
-	 <div class="row"> 
-	    {{> chat}}
-	    {{> rooms}}
-		</div>
-	</div>
-	  {{> mapPostsList}}
-	{{else}}
-		{{> landing}}
-{{/if}}
+  {{>navBar}}
+
+  {{#if currentUser}}
+    <div class="container" style="padding-top: 50px;">
+    	<div class="row"> 
+        {{> chat}}
+        {{> rooms}}
+    	</div>
+  	</div>
+  	{{else}}
+	{{/if}}
+
+	{{> mapPostsList}}
+
 {{>footer}}
 
 </body>
   
+
