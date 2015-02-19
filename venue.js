@@ -2,7 +2,7 @@ Messages = new Meteor.Collection('messages');
 Rooms = new Meteor.Collection('rooms');
 
 if (Meteor.isClient) {
-  Session.setDefault('currentRoom', '');
+  Session.setDefault('currentRoom', 'Home Room');
 
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_AND_EMAIL"
