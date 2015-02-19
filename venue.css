@@ -170,3 +170,8 @@ a:after {
 	color: white
 }
 
+#loginButtons {
+	z-index: 999;
+	padding-bottom: 10px;
+}
+

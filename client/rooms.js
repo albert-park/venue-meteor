@@ -1,6 +1,6 @@
 Template.rooms.helpers({
    roomList: function () {
-     console.log(Rooms.find().fetch());
+     //console.log(Rooms.find().fetch());
      return Rooms.find();
    }
  });

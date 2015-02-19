@@ -98,8 +98,7 @@ Template.mapPostsList.created = function(){
 
     map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 
-
-     var contentString = '<h1>OH BOY</h1>';
+      var contentString = null;
 
       var infowindow = new google.maps.InfoWindow({
           content: contentString
@@ -129,7 +128,7 @@ Template.mapPostsList.created = function(){
     for(var i = 0; i < markers.length; i++){
       var positionMarker = new google.maps.LatLng(markers[i][1], markers[i][2]);
       
-      var positionTitle = markers[i][0];
+      var positionTitle = '<a class="map-marker" href="#">' + markers[i][0] + '</a>';
 
       // marker object
       marker = new google.maps.Marker({
@@ -144,6 +143,7 @@ Template.mapPostsList.created = function(){
       google.maps.event.addListener(marker, 'click', (function(marker){
         return function(){
           infowindow.setContent(marker.title);
+          // infowindow.setContent(contentString);
           infowindow.open(map, marker);
         }
       })(marker));
@@ -164,3 +164,19 @@ Template.mapPostsList.created = function(){
 
   google.maps.event.addDomListener(window, 'load', initialize);
 }
+
+Template.mapPostsList.destroyed = function(){console.log("map was destroyed")}
+
+
+
+
+
+Template.mapPostsList.events({
+   'click .map-marker': function(evt, templ){
+      evt.preventDefault();
+      console.log(evt.target.text);
+      var currentRoom = evt.target.text;
+      // console.log(currentRoom);
+      Session.set('currentRoom', currentRoom);
+   }
+});
