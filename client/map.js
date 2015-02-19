@@ -75,6 +75,50 @@ Template.mapPostsList.created = function(){
         },
     ];
 
+
+    
+
+
+    if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var image = {
+        url: '/current_location.png',
+        origin: null,
+        anchor: null
+      };
+
+      // var infowindow = new google.maps.InfoWindow({
+      //   map: map,
+      //   position: pos,
+      //   icon: image,
+      //   content: 'Location found using HTML5.'
+      // });
+
+      var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+          icon: image,
+          animation: google.maps.Animation.BOUNCE
+      });
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+
+
+
+
+
+
+
     var mapOptions = {
       zoom: 14,
       center: generalAssembly,
@@ -288,5 +332,7 @@ Template.mapPostsList.events({
       var currentRoom = evt.target.text;
       // console.log(currentRoom);
       Session.set('currentRoom', currentRoom);
+
+      $('html, body').animate({ scrollTop: 0 }, 'slow');
    }
 });
