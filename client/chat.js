@@ -39,8 +39,6 @@
      var message = $('#messageBox').val();
      var roomName = $('#roomBox').val();
      if (message == '') {
-       alert('Field cannot be empty')
-
        event.preventDefault();
      } else {
 
@@ -84,7 +82,7 @@
         }       
 
         $('#messageBox').val('');
-  
+
         return false;
       }
    }
