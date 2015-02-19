@@ -39,7 +39,7 @@
      var message = $('#messageBox').val();
      var roomName = $('#roomBox').val();
      if (message == '') {
-       alert('Field cannot be empty')
+       // alert('Field cannot be empty')
 
        event.preventDefault();
      } else {
@@ -56,8 +56,16 @@
       var message = $('#messageBox').val();
       var roomName = $('#roomBox').val();
       if(evt.charCode == 13) {
+
+        if (message == '') {
+       // alert('Field cannot be empty')
+
+       event.preventDefault();
+     } else {
         Messages.insert({content: message, roomName: Session.get('currentRoom'), postedBy: Meteor.user().username || Meteor.user().profile.name, createdAt: new Date()});
         $('#messageBox').val('');
+
+      }
   
         return false;
       }

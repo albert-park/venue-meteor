@@ -9,8 +9,15 @@ Template.rooms.helpers({
    'click #createRoom': function () {
      var roomName = $('#roomBox').val();
 
-     Rooms.insert({name: roomName, createdAt: new Date()});
-     $('#roomBox').val('');
+     if (roomName == '') {
+       // alert('Field cannot be empty')
+
+       event.preventDefault();
+     } else {
+
+       Rooms.insert({name: roomName, createdAt: new Date()});
+       $('#roomBox').val('');
+     }
    },
    'change select': function(){
      var currentRoom = $('select').val();
