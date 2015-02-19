@@ -1,21 +1,9 @@
 Template.mapPostsList.created = function(){
   var generalAssembly = new google.maps.LatLng(34.024604, -118.482168);
-  var generalAssembly2 = new google.maps.LatLng(34.012917, -118.495198);
-
-  var misfit = new google.maps.LatLng(34.016225, -118.496553);
-  var barkowski = new google.maps.LatLng(34.024960, -118.460058);
-  var libraryAlehouse = new google.maps.LatLng(33.999639, -118.480583);
-  var copaDoro = new google.maps.LatLng(34.014233, -118.495128);
-  var speakEasy = new google.maps.LatLng(34.015706, -118.476727);
-  var fourPlay = new google.maps.LatLng(34.038517, -118.437933);
-  var barChloe = new google.maps.LatLng(34.014185, -118.495631);
-  var dailyPint = new google.maps.LatLng(34.021143, -118.465919);
-  var roomSantaMonica = new google.maps.LatLng(34.024236, -118.486217);
-
-
   var marker;
   var map;
   var MY_MAPTYPE_ID = 'custom_style';
+  var infowindow = null;
 
   function initialize() {
 
@@ -118,44 +106,51 @@ Template.mapPostsList.created = function(){
 
 
     var image = 'https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/location-alt-512.png';
-    marker = new google.maps.Marker({
-      map:map,
-      draggable:false,
-      // icon: image,
-      animation: google.maps.Animation.DROP,
-      position: generalAssembly,
-      title: 'General Assembly'
-    });
-    google.maps.event.addListener(marker, 'click', toggleBounce);
 
-    marker2 = new google.maps.Marker({
-      map:map,
-      draggable:false,
-      position: generalAssembly2,
-      title: 'General Assembly'
-    });
-    google.maps.event.addListener(marker2, 'click', function() {
-      infowindow.open(map,marker2);
-    });
+    var markers = [
+    ['General Assembly', 34.024604, -118.482168],
+    ['General Assembly 2', 34.012917, -118.495198],
+    ['The Misfit Restaurant & Bar', 34.016225, -118.496553],
+    ['Barkowski', 34.024960, -118.460058],
+    ['Libary AleHouse', 33.999639, -118.480583],
+    ["Copa d' Oro", 34.014233, -118.495128],
+    ['Speak Easy Cocktail', 34.015706, -118.476727],
+    ['4Play Gentlemens Club', 34.038517, -118.437933],
+    ['Bar Chloe', 34.014185, -118.495631],
+    ['The Daily Pint', 34.021143, -118.465919],
+    ['The Room Santa Monica', 34.024236, -118.486217]
+    ];
 
-    marker3 = new google.maps.Marker({
-      map:map,
-      draggable:false,
-      position: misfit
+    infowindow = new google.maps.InfoWindow({
+      content: null
     });
 
-    marker4 = new google.maps.Marker({
-      map:map,
-      draggable:false,
-      position: barkowski
-    });
+    for(var i = 0; i < markers.length; i++){
+      var positionMarker = new google.maps.LatLng(markers[i][1], markers[i][2]);
+      
+      var positionTitle = markers[i][0];
 
-    marker5 = new google.maps.Marker({
-      map:map,
-      draggable:false,
-      position: libraryAlehouse
-    });
+      // marker object
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: false,
+        animation: google.maps.Animation.DROP,
+        position: positionMarker,
+        title: positionTitle
+      });
+
+      // add title to the marker once clicked
+      google.maps.event.addListener(marker, 'click', (function(marker){
+        return function(){
+          infowindow.setContent(marker.title);
+          infowindow.open(map, marker);
+        }
+      })(marker));
+
+    }
   }
+  google.maps.event.addDomListener(window, 'load', initialize);
+
 
   function toggleBounce() {
 
