@@ -33,10 +33,8 @@ Features
 
 Technologies
 ----------
-- AngularJS (presentation layer)
-- Ruby on Rails (API data layer)
-- PostgreSQL (database)
-- Websockets (real time chat API)
+- MeteorJS
+- MongoDB
 - Google Maps API (location data)
 - Travis CI (continuous integration)
 - Bootstrap (front-end design)
