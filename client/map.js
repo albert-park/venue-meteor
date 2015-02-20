@@ -110,7 +110,7 @@ Template.mapPostsList.rendered = function(){
   }
 
     var mapOptions = {
-      zoom: 14,
+      zoom: 13,
       center: generalAssembly,
        scrollwheel: false,
       disableDefaultUI: true,

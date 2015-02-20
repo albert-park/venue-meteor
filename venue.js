@@ -157,6 +157,7 @@ if (Meteor.isServer) {
     ]; 
 
     Rooms.remove({});
+    
 
     // Inserting roomnames to dropdown
     for (var i = 0; i < markers.length; i++){

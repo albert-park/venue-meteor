@@ -12,7 +12,7 @@
 	border-radius: 25px;
 }
 body {
-  background-color: #f2f2f2;
+  background-color: #ecf0f1;
     font-family: "Lato";
     font-weight: 300;
     font-size: 16px;
@@ -173,4 +173,17 @@ a:after {
 #login-dropdown-list {
   position: absolute;
   top: 0px;
+}
+
+/* CHAT BOX */
+
+#chat-box{
+    border: 1px solid #333333;
+}
+#chat-box-heading {
+    background-color: #333333;
+    color: white;
+}
+#chat-message-box {
+    margin-left: 60px;
 }
