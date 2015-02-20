@@ -110,9 +110,9 @@ Template.mapPostsList.rendered = function(){
   }
 
     var mapOptions = {
-      zoom: 14,
+      zoom: 12,
       center: generalAssembly,
-       scrollwheel: false,
+       scrollwheel: true,
       disableDefaultUI: true,
       mapTypeControlOptions: {
         mapTypeIds: [google.maps.MapTypeId.ROADMAP, MY_MAPTYPE_ID]
