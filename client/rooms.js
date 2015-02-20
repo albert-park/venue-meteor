@@ -21,7 +21,7 @@ Template.rooms.helpers({
    },
    'change select': function(){
      var currentRoom = $('select').val();
-     console.log(currentRoom);
+     // console.log(currentRoom);
      Session.set('currentRoom', currentRoom);
    }
  });
