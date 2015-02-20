@@ -19,13 +19,13 @@
   	</div>
 	{{/if}}
 
-  {{> mapPostsList}}
 
   {{#unless currentUser}}
     {{>landing}}
-    {{>footer}}
   {{/unless}}
+	  {{> mapPostsList}}
 
+    {{>footer}}
 </body>
 
 <template name="mapPostsList">
