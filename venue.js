@@ -1,30 +1,30 @@
 Messages = new Meteor.Collection('messages');
 Rooms = new Meteor.Collection('rooms');
 
-Router.onBeforeAction(function () {
-  // all properties available in the route function
-  // are also available here such as this.params
+// Router.onBeforeAction(function () {
+//   // all properties available in the route function
+//   // are also available here such as this.params
 
-  if (!Meteor.userId()) {
-    // if the user is not logged in, render the Login template
-    this.render('landing');
-  } else {
-    // otherwise don't hold up the rest of hooks or our route/action function
-    // from running
-    this.next();
-  }
-});
+//   if (!Meteor.userId()) {
+//     // if the user is not logged in, render the Login template
+//     // this.render('landing');
+//   } else {
+//     // otherwise don't hold up the rest of hooks or our route/action function
+//     // from running
+//     this.next();
+//   }
+// });
 
-Router.route('/', function(){
-	this.render('applicationLayout');
-})
+// Router.route('/', function(){
+// 	// this.render('applicationLayout');
+// })
 
 if (Meteor.isClient) {
-  Session.setDefault('currentRoom', 'Home Room');
-  //Accounts.onLogin(Template.mapPostsList.created);
-  Accounts.ui.config({
-    passwordSignupFields: "USERNAME_AND_EMAIL"
-  });
+    Session.setDefault('currentRoom', 'Home Room');
+
+    Accounts.ui.config({
+        passwordSignupFields: "USERNAME_AND_EMAIL"
+    });
 }
 
 if (Meteor.isServer) {

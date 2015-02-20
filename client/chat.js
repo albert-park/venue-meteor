@@ -18,6 +18,10 @@
 //    };
 //  }
 
+ // Template.chat.created = function () {
+ //   //document.location.reload();
+ // }
+
  Template.chat.helpers({
    messageList: function () {
      return Messages.find({roomName: Session.get('currentRoom') });

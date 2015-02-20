@@ -1,4 +1,4 @@
-Template.mapPostsList.created = function(){
+Template.mapPostsList.rendered = function(){
   var generalAssembly = new google.maps.LatLng(34.024604, -118.482168);
   var marker;
   var map;
@@ -75,10 +75,6 @@ Template.mapPostsList.created = function(){
         },
     ];
 
-
-    
-
-
     if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = new google.maps.LatLng(position.coords.latitude,
@@ -113,12 +109,6 @@ Template.mapPostsList.created = function(){
     handleNoGeolocation(false);
   }
 
-
-
-
-
-
-
     var mapOptions = {
       zoom: 14,
       center: generalAssembly,
@@ -130,8 +120,7 @@ Template.mapPostsList.created = function(){
       mapTypeId: MY_MAPTYPE_ID
     };
 
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     var styledMapOptions = {
       name: 'Custom Style'
@@ -306,8 +295,9 @@ Template.mapPostsList.created = function(){
       })(marker));
 
     }
+    return Meteor.user();
   }
-  google.maps.event.addDomListener(window, 'load', initialize);
+  // google.maps.event.addDomListener(window, 'load', initialize);
 
 
   function toggleBounce() {
@@ -319,10 +309,10 @@ Template.mapPostsList.created = function(){
     }
   }
 
-  google.maps.event.addDomListener(window, 'load', initialize);
-}
 
-Template.mapPostsList.destroyed = function(){console.log("map was destroyed")}
+  google.maps.event.addDomListener(window, 'load', initialize);
+  Session.set('map', true);
+};
 
 // Link to enter room based on map marker
 Template.mapPostsList.events({
@@ -333,6 +323,22 @@ Template.mapPostsList.events({
       // console.log(currentRoom);
       Session.set('currentRoom', currentRoom);
 
-      $('html, body').animate({ scrollTop: 0 }, 'slow');
+      $('html, body').velocity("scroll", { duration: 1500, easing: "easeOutCirc" }) 
+      // animate({ scrollTop: 0 }, 'slow');
    }
 });
+
+Template.mapPostsList.helpers({
+  loginStatus: function(){
+    if (Meteor.user()){
+     return 'loggedIn'
+    } else {
+      return'loggedOut'
+    }
+  }
+})
+
+Template.mapPostsList.destroyed = function() {
+ // window.location.reload();
+};
+
