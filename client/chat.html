@@ -1,9 +1,9 @@
 <template name="chat">
   <div class="col-md-8" id="chat-window">
-	<div class="panel panel-info">
-    <div class="panel-heading">
+	<div class="panel panel-info" id="chat-box">
+    <div class="panel-heading" id="chat-box-heading">
     {{#if roomName}}
-      {{roomName}}  <span class="label label-danger pull-right"> {{messageCount}} </span>
+      <strong>{{roomName}}</strong>  <span class="label label-danger pull-right"> {{messageCount}} </span>
     {{/if}}
 
     </div>
@@ -17,13 +17,15 @@
 	          	      <!-- <img class="media-object img-circle " src=""/> -->
 	                </a>
                 	<div class="media-body" >
-                   <small class="text-muted"><img src="{{ userAvatar }}" id="twitterImg"><strong>{{ postedBy }}</strong> | {{ createdAt }}</small><br>
-                   {{content}}
-                    <hr />
+                     <small class="text-muted"><img src="{{ userAvatar }}" id="twitterImg"><strong>&nbsp;&nbsp;&nbsp;&nbsp;{{ postedBy }}</strong> | {{ createdAt }}</small><br>
+                   <div id="chat-message-box">
+                     {{content}}
+                   </div>
                 </div>
 	            </div>
 						</div>
 	         </li>
+           <hr>
         {{/each}}
     </ul>
 			 </div>
