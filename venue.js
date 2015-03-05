@@ -31,6 +31,7 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
     var markers = [
+    ['General Assembly, 2nd Street', 34.013445, -118.494986],
     ['Cameo Bar', 34.008394, -118.490418],
     ['The Commons Ale House', 34.013684, -118.495804],
     ['The Misfit Restaurant & Bar', 34.016225, -118.496553],
