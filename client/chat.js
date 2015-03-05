@@ -1,27 +1,3 @@
-// Template.chat.rendered = function(){
-//    var panelBody = this.$('.panel-body');
-//    panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 100);
-
-//    this.find('ul')._uihooks = {
-//      insertElement: function(node, next) {
-//        $(node)
-//          .hide()
-//          .insertBefore(next)
-//          .fadeIn(1000);
-//        panelBody.animate({ scrollTop: panelBody.prop("scrollHeight") - panelBody.height()}, 300);
-//      },
-//      removeElement: function(node) {
-//        $(node).fadeOut(function() {
-//          this.remove();
-//        });
-//      }
-//    };
-//  }
-
- // Template.chat.created = function () {
- //   //document.location.reload();
- // }
-
  Template.chat.helpers({
    messageList: function () {
      return Messages.find({roomName: Session.get('currentRoom') });
@@ -56,6 +32,13 @@
       else if(Meteor.user().services.twitter) {
         Messages.insert({content: message, roomName: Session.get('currentRoom'),
         userAvatar: Meteor.user().services.twitter.profile_image_url,
+        postedBy: Meteor.user().username || Meteor.user().profile.name,
+        createdAt: new Date()});
+      }
+      else if(Meteor.user().services.linkedin) {
+        Messages.insert({content: message, roomName: Session.get('currentRoom'),
+        // userAvatar: Meteor.user().services.linkedin.profile_image_url,
+        userAvatar: Meteor.user().services.linkedin.pictureUrl,
         postedBy: Meteor.user().username || Meteor.user().profile.name,
         createdAt: new Date()});
       }

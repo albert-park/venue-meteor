@@ -9,7 +9,8 @@
 }
 
 #twitterImg {
-	border-radius: 25px;
+	border-radius: 50%;
+    height: 50px;
 }
 body {
   background-color: #ecf0f1;
