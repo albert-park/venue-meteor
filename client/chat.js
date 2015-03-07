@@ -22,7 +22,7 @@
        event.preventDefault();
      } else {
 
-      // check for facebook or twitter account for photo
+      // check facebook, twitter, or linkedin account for photo
       if (Meteor.user().services.facebook){
         Messages.insert({content: message, roomName: Session.get('currentRoom'),
         userAvatar: "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture",
@@ -37,7 +37,6 @@
       }
       else if(Meteor.user().services.linkedin) {
         Messages.insert({content: message, roomName: Session.get('currentRoom'),
-        // userAvatar: Meteor.user().services.linkedin.profile_image_url,
         userAvatar: Meteor.user().services.linkedin.pictureUrl,
         postedBy: Meteor.user().username || Meteor.user().profile.name,
         createdAt: new Date()});
