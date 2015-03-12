@@ -35,12 +35,12 @@
         postedBy: Meteor.user().username || Meteor.user().profile.name,
         createdAt: new Date()});
       }
-      else if(Meteor.user().services.linkedin) {
-        Messages.insert({content: message, roomName: Session.get('currentRoom'),
-        userAvatar: Meteor.user().services.linkedin.pictureUrl,
-        postedBy: Meteor.user().username || Meteor.user().profile.name,
-        createdAt: new Date()});
-      }
+      // else if(Meteor.user().services.linkedin) {
+      //   Messages.insert({content: message, roomName: Session.get('currentRoom'),
+      //   userAvatar: Meteor.user().services.linkedin.pictureUrl,
+      //   postedBy: Meteor.user().username || Meteor.user().profile.name || Meteor.user().services.linkedin.name,
+      //   createdAt: new Date()});
+      // }
 
      $('#messageBox').val('');
 
@@ -53,23 +53,34 @@
       var roomName = $('#roomBox').val();
       if(evt.charCode == 13) {
 
-        // check for facebook or twitter account for photo
-        if (Meteor.user().services.facebook){
-          Messages.insert({content: message, roomName: Session.get('currentRoom'),
-          userAvatar: "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture",
-          postedBy: Meteor.user().username || Meteor.user().profile.name,
-          createdAt: new Date()});
-        }
-        else if(Meteor.user().services.twitter) {
-          Messages.insert({content: message, roomName: Session.get('currentRoom'),
-          userAvatar: Meteor.user().services.twitter.profile_image_url,
-          postedBy: Meteor.user().username || Meteor.user().profile.name,
-          createdAt: new Date()});
-        }       
+      if (message == '') {
+         event.preventDefault();
+       } else {
 
-        $('#messageBox').val('');
-
-        return false;
+      // check facebook, twitter, or linkedin account for photo
+      if (Meteor.user().services.facebook){
+        Messages.insert({content: message, roomName: Session.get('currentRoom'),
+        userAvatar: "http://graph.facebook.com/" + Meteor.user().services.facebook.id + "/picture",
+        postedBy: Meteor.user().username || Meteor.user().profile.name,
+        createdAt: new Date()});
       }
+      else if(Meteor.user().services.twitter) {
+        Messages.insert({content: message, roomName: Session.get('currentRoom'),
+        userAvatar: Meteor.user().services.twitter.profile_image_url,
+        postedBy: Meteor.user().username || Meteor.user().profile.name,
+        createdAt: new Date()});
+      }
+      // else if(Meteor.user().services.linkedin) {
+      //   Messages.insert({content: message, roomName: Session.get('currentRoom'),
+      //   userAvatar: Meteor.user().services.linkedin.pictureUrl,
+      //   postedBy: Meteor.user().username || Meteor.user().profile.name || Meteor.user().services.linkedin.name,
+      //   createdAt: new Date()});
+      // }
+
+     $('#messageBox').val('');
+
+     return false;
+     }
    }
+ }
  });
