@@ -35,6 +35,8 @@
         postedBy: Meteor.user().username || Meteor.user().profile.name,
         createdAt: new Date()});
       }
+      
+      // adding LinkedIn auth, someday
       // else if(Meteor.user().services.linkedin) {
       //   Messages.insert({content: message, roomName: Session.get('currentRoom'),
       //   userAvatar: Meteor.user().services.linkedin.pictureUrl,
@@ -48,6 +50,7 @@
      }
    },
 
+   // same photo check as above, but on enter keypress
    'keypress input': function(evt) {
       var message = $('#messageBox').val();
       var roomName = $('#roomBox').val();
