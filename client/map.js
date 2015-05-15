@@ -143,6 +143,8 @@ Template.mapPostsList.rendered = function(){
     // Bars in the LA area
     var markers = [
     ['Cameo Bar', 34.008394, -118.490418],
+    ['Deutsch LA', 33.976910, -118.421704],
+    // ['CodeSmith', 33.978712, -118.422610],
     ['The Commons Ale House', 34.013684, -118.495804],
     ['The Misfit Restaurant & Bar', 34.016225, -118.496553],
     ['Barkowski', 34.024960, -118.460058],

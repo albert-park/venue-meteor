@@ -1,6 +1,7 @@
 Messages = new Meteor.Collection('messages');
 Rooms = new Meteor.Collection('rooms');
 
+
 // Router.onBeforeAction(function () {
 //   // all properties available in the route function
 //   // are also available here such as this.params
@@ -30,8 +31,12 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+    Rooms.remove({});
+
     var markers = [
     ['General Assembly, 2nd Street', 34.013445, -118.494986],
+    ['Deutsch LA', 33.976910, -118.421704],
+    // ['CodeSmith', 33.978712, -118.422610],
     ['Cameo Bar', 34.008394, -118.490418],
     ['The Commons Ale House', 34.013684, -118.495804],
     ['The Misfit Restaurant & Bar', 34.016225, -118.496553],
@@ -157,7 +162,6 @@ if (Meteor.isServer) {
     ['The Greyhound Bar & Grill', 34.108725, -118.193897]
     ]; 
 
-    Rooms.remove({});
     
 
     // Inserting roomnames to dropdown

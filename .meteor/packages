@@ -11,3 +11,5 @@ accounts-twitter
 mizzao:bootstrap-3
 percolate:velocityjs
 service-configuration
+autopublish
+insecure
